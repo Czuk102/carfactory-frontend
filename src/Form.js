@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import "./index.css";
@@ -7,6 +7,7 @@ import {FiTrash2} from "react-icons/fi"
 
 initTE({Ripple, Input});
 export const Form = () => {
+    const [isSubmitted,setIsSubmitted] = useState(false)
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -37,7 +38,7 @@ export const Form = () => {
                 })
             ),
         }),
-        onSubmit: async (values) => {
+        onSubmit: async (values, {setStatus, resetForm}) => {
             try {
                 const response = await fetch("http://localhost:8080/cars", {
                     method: "POST",
@@ -51,6 +52,8 @@ export const Form = () => {
                     const responseData = await response.json(); // Parse response data
                     console.log("POST request succeeded");
                     console.log(responseData); // Log the response data
+                    setIsSubmitted(true)
+                    formik.resetForm()
                 } else {
                     console.error("POST request failed")
 
@@ -179,6 +182,9 @@ export const Form = () => {
 
             {renderEquipmentFields()}
 
+            {isSubmitted && (
+                <div className="text-green-500 text-sm mt-1">Car created successfully!</div>
+            )}
             <button
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
                 type="submit"
