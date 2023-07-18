@@ -184,9 +184,9 @@ function Layout() {
                 </div>
             </header>
             <main>
-                <div></div>
+                <div><Form/></div>
             </main>
-        </div><Form/>
+        </div>
 </>
 
 );
