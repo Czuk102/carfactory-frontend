@@ -1,9 +1,8 @@
-
-import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
-import {Form} from "./Form";
+import {Fragment, useEffect, useState} from 'react'
+import {Disclosure, Menu, Transition} from '@headlessui/react'
+import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/react/24/outline'
 import "./index.css"
+import {Link, Outlet, useLocation} from "react-router-dom";
 
 const user = {
     name: 'Tom Cook',
@@ -12,9 +11,9 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'CarFactory', href: '#', current: true },
-    { name: 'Create', href: '#', current: false },
-    { name: 'Warehouse', href: '#', current: false },
+    { name: 'CarFactory', href: '/', current: false },
+    { name: 'Create', href: '/create', current: false },
+    { name: 'Warehouse', href: '/read', current: false },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: 'profile' +
@@ -26,7 +25,20 @@ const userNavigation = [
 function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
+
 function Layout() {
+    const location = useLocation();
+    const [updatedNavigation, setUpdatedNavigation] = useState(navigation);
+
+    useEffect(() => {
+
+        const updatedNav = updatedNavigation.map((item) => ({
+            ...item,
+            current: item.href === location.pathname,
+        }));
+
+        setUpdatedNavigation(updatedNav);
+    }, [location,updatedNavigation]);
     return (
 
     <>
@@ -46,20 +58,19 @@ function Layout() {
                                     </div>
                                     <div className="hidden md:block">
                                         <div className="ml-10 flex items-baseline space-x-4">
-                                            {navigation.map((item) => (
-                                                <a
+                                            {updatedNavigation.map((item) => (
+                                                <Link
                                                     key={item.name}
-                                                    href={item.href}
+                                                    to={item.href}
                                                     className={classNames(
                                                         item.current
-                                                            ? 'bg-gray-900 text-white'
-                                                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                            ? 'bg-gray-900 text-white border-solid border-2 border-blue-300/40'                                                            : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                         'rounded-md px-3 py-2 text-sm font-medium'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
                                                     {item.name}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
@@ -184,7 +195,7 @@ function Layout() {
                 </div>
             </header>
             <main>
-                <div><Form/></div>
+                <div><Outlet/></div>
             </main>
         </div>
 </>
