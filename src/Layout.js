@@ -14,7 +14,7 @@ const user = {
 const navigation = [
     { name: 'CarFactory', href: '/', current: false },
     { name: 'Create', href: '/create', current: false },
-    { name: 'Warehouse', href: '/read', current: false },
+    { name: 'Warehouse', href: '/warehouse', current: false },
 ]
 const userNavigation = [
     { name: 'Your Profile', href: 'profile' +

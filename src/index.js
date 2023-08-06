@@ -5,7 +5,7 @@ import Layout from './Layout';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Form} from "./Form";
-import Warehouse, {loader, loader as carsLoader} from "./Warehouse";
+import Warehouse, {loader} from "./Warehouse";
 
 
 const router = createBrowserRouter([
@@ -16,6 +16,11 @@ const router = createBrowserRouter([
             {
                 path:"create",
                 element: <Form/>
+            },
+            {
+                path:"warehouse",
+                element: <Warehouse/>,
+                loader: loader,
             }
         ]
     }
