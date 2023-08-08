@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
 import "./index.css";
-import {Ripple, Input, initTE} from "tw-elements";
+import {initTE, Input, Ripple} from "tw-elements";
 import {FiTrash2} from "react-icons/fi"
 
 initTE({Ripple, Input});
@@ -15,6 +15,7 @@ export const Form = () => {
             engine: "PETROL",
             equipments: [],
             price: "",
+            production_year: "",
         },
         validationSchema: Yup.object({
             name: Yup.string()
@@ -37,6 +38,10 @@ export const Form = () => {
                         .required("Equipment price is required!"),
                 })
             ),
+            production_year: Yup.number()
+                .min(1888, "Production year cannot be less than 1888!" )
+                .max(new Date().getFullYear(), "Production year cannot be in the future!" )
+                .required()
         }),
         onSubmit: async (values, {setStatus, resetForm}) => {
             try {
@@ -161,6 +166,9 @@ export const Form = () => {
             {renderInput("Name", "name", "text")}
 
             {renderInput("Engine Capacity", "engineCapacity", "number")}
+
+            {renderInput("Production Year","production_year","number")}
+
             <label className="block text-gray-700 text-sm font-bold mb-1">
                 Engine
             </label>
