@@ -61,7 +61,7 @@ function Cars({carList, onDeleteCar}){
                                 </thead>
                                 <tbody className="divide-y divide-gray-200">
                                 {carList.map((car) =>
-                                    <tr>
+                                    <tr key={car.id}>
                                         <td className="py-3 pl-4">
                                             <div className="flex items-center h-5">
                                                 <input
