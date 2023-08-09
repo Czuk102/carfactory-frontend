@@ -39,7 +39,7 @@ function Layout() {
         }));
 
         setUpdatedNavigation(updatedNav);
-    }, []);
+    }, [location]);
     return (
 
     <>
