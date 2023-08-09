@@ -7,6 +7,7 @@ export async function getCars(){
 }
 export async function  deleteCarById(id){
     await fetch(`http://localhost:8080/cars/${id}`,
-        {method: "DELETE",
-            headers: {"Content-type:": "application/json"}})
+        {
+            method: "DELETE",
+            headers: {"Content-type": "application/json"}})
 }
