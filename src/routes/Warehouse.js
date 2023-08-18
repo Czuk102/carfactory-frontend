@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Cars from "./Cars";
-import {deleteCarById, getCars} from "./util/api";
+import Cars from "../Cars";
+import {deleteCarById, getCars} from "../util/api";
 import {useLoaderData} from "react-router-dom";
 
 export default function Warehouse() {

@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {useFormik} from "formik";
 import * as Yup from "yup";
-import "./index.css";
+import "../index.css";
 import {initTE, Input, Ripple} from "tw-elements";
 import {FiTrash2} from "react-icons/fi"
 

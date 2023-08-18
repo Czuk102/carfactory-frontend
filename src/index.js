@@ -4,8 +4,8 @@ import './index.css';
 import Layout from './Layout';
 import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import {Form} from "./Form";
-import Warehouse, {loader} from "./Warehouse";
+import {Form} from "./routes/Form";
+import Warehouse, {loader} from "./routes/Warehouse";
 
 
 const router = createBrowserRouter([
