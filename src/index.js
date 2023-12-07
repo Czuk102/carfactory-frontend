@@ -6,21 +6,21 @@ import reportWebVitals from './reportWebVitals';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import {Form} from "./routes/Form";
 import Warehouse, {loader} from "./routes/Warehouse";
+import Warehouse from "./routes/Warehouse";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Layout/>,
-        children:[
+        children: [
             {
-                path:"create",
+                path: "create",
                 element: <Form/>
             },
             {
-                path:"warehouse",
+                path: "warehouse",
                 element: <Warehouse/>,
-                loader: loader,
             }
         ]
     }
