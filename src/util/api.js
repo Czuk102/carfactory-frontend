@@ -1,13 +1,11 @@
-export async function getCars(){
-    const response = await fetch("http://localhost:8080/cars/all");
-    if (!response.ok){
+import axios from "axios";
 
-    }
-    return response.json();
+const API_URL = "http://localhost:8080";
+export async function getCars(){
+    const response = await axios.get(`${API_URL}/cars/all`);
+
+    return response.data;
 }
 export async function  deleteCarById(id){
-    await fetch(`http://localhost:8080/cars/${id}`,
-        {
-            method: "DELETE",
-            headers: {"Content-type": "application/json"}})
+    await axios.delete(`${API_URL}/cars/${id}`);
 }
