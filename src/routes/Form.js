@@ -43,7 +43,7 @@ export const Form = () => {
                 .max(new Date().getFullYear(), "Production year cannot be in the future!" )
                 .required()
         }),
-        onSubmit: async (values, {setStatus, resetForm}) => {
+        onSubmit: async (values) => {
             try {
                 const response = await fetch("http://localhost:8080/cars", {
                     method: "POST",
@@ -169,7 +169,7 @@ export const Form = () => {
 
             {renderInput("Production Year","production_year","number")}
 
-            <label className="block text-gray-700 text-sm font-bold mb-1">
+            <label htmlFor="engine" className="block text-gray-700 text-sm font-bold mb-1">
                 Engine
             </label>
             <select

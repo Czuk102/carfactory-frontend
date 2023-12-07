@@ -1,6 +1,6 @@
 import {Fragment, useEffect, useState} from 'react'
 import {Disclosure, Menu, Transition} from '@headlessui/react'
-import {Bars3Icon, BellIcon, XMarkIcon} from '@heroicons/react/24/outline'
+import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline'
 import "./index.css"
 import {Link, Outlet, useLocation} from "react-router-dom";
 import {FaCar} from "react-icons/fa";

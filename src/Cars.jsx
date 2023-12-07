@@ -19,7 +19,7 @@ function Cars({carList, onDeleteCar}){
                                                 className="text-blue-600 border-gray-200 rounded focus:ring-blue-500"
                                             />
                                             <label
-                                                htmlFor="checkbox"
+                                                htmlFor="checkbox-all"
                                                 className="sr-only"
                                             >
                                                 Checkbox
@@ -69,7 +69,7 @@ function Cars({carList, onDeleteCar}){
                                                     className="text-blue-600 border-gray-200 rounded focus:ring-blue-500"
                                                 />
                                                 <label
-                                                    htmlFor="checkbox"
+                                                    htmlFor="checkbox-all"
                                                     className="sr-only"
                                                 >
                                                     Checkboxcdfdfd
